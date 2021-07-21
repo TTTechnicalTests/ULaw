@@ -1,10 +1,13 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ULaw.ApplicationProcessor;
-using ULaw.ApplicationProcessor.Enums;
-
-namespace ULaw.ApplicationProcessor.Tests
+﻿namespace ULaw.ApplicationProcessor.Tests
 {
+    using System;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using ULaw.ApplicationProcessor;
+    using ULaw.ApplicationProcessor.Enums;
+    using Ulaw.ApplicationProcessor.Models;
+
 
     [TestClass]
     public class ApplicationSubmissionTests
@@ -20,109 +23,117 @@ namespace ULaw.ApplicationProcessor.Tests
         [TestMethod]
         public void ApplicationSubmissionWithFirstLawDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.first;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, OfferEmailForFirstLawDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithFirstLawAndBusinessDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.first;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.lawAndBusiness;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, OfferEmailForFirstLawAndBusinessDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithFirstEnglishDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.first;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.English;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneLawDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneMathsDegree()
         {
-
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.maths;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneLawAndBusinessDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.lawAndBusiness;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawAndBusinessDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoTwoEnglishDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.twoTwo;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.English;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoTwoLawDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.twoTwo;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithThirdDegree()
         {
-            Application thisSubmission = new Application("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationService = new ApplicationSubmissionService();
 
             thisSubmission.DegreeGrade = DegreeGradeEnum.third;
             thisSubmission.DegreeSubject = DegreeSubjectEnum.maths;
 
-            string emailHtml = thisSubmission.Process();
+            string emailHtml = applicationService.Process(thisSubmission);
             Assert.AreEqual(emailHtml, RejectionEmailForAnyThirdDegreeResult);
         }
     }

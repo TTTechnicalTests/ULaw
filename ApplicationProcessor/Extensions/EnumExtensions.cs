@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel;
-using System.Reflection;
-
-namespace ULaw.ApplicationProcessor
+﻿namespace ULaw.ApplicationProcessor
 {
-    static class ExtensionMethods
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.ComponentModel;
+    using System.Reflection;
+
+
+    static class EnumExtensions
     {
         public static string ToDescription(this Enum en)
         {

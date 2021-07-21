@@ -8,7 +8,6 @@
     using ULaw.ApplicationProcessor.Enums;
     using Ulaw.ApplicationProcessor.Models;
 
-
     [TestClass]
     public class ApplicationSubmissionTests
     {
@@ -26,10 +25,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.first;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
+            thisSubmission.DegreeGrade = DegreeGrade.First;
+            thisSubmission.DegreeSubject = DegreeSubject.Law;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, OfferEmailForFirstLawDegreeResult);
         }
 
@@ -39,10 +39,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.first;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.lawAndBusiness;
+            thisSubmission.DegreeGrade = DegreeGrade.First;
+            thisSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, OfferEmailForFirstLawAndBusinessDegreeResult);
         }
 
@@ -52,10 +53,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.first;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.English;
+            thisSubmission.DegreeGrade = DegreeGrade.First;
+            thisSubmission.DegreeSubject = DegreeSubject.English;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
@@ -65,10 +67,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
+            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            thisSubmission.DegreeSubject = DegreeSubject.Law;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawDegreeResult);
         }
 
@@ -78,10 +81,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.maths;
+            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            thisSubmission.DegreeSubject = DegreeSubject.Maths;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
@@ -91,10 +95,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.twoOne;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.lawAndBusiness;
+            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            thisSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawAndBusinessDegreeResult);
         }
 
@@ -104,10 +109,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.twoTwo;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.English;
+            thisSubmission.DegreeGrade = DegreeGrade.TwoTwo;
+            thisSubmission.DegreeSubject = DegreeSubject.English;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
@@ -117,10 +123,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.twoTwo;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.law;
+            thisSubmission.DegreeGrade = DegreeGrade.TwoTwo;
+            thisSubmission.DegreeSubject = DegreeSubject.Law;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
         }
 
@@ -130,10 +137,11 @@
             var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGradeEnum.third;
-            thisSubmission.DegreeSubject = DegreeSubjectEnum.maths;
+            thisSubmission.DegreeGrade = DegreeGrade.Third;
+            thisSubmission.DegreeSubject = DegreeSubject.Maths;
 
-            string emailHtml = applicationService.Process(thisSubmission);
+            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+
             Assert.AreEqual(emailHtml, RejectionEmailForAnyThirdDegreeResult);
         }
     }

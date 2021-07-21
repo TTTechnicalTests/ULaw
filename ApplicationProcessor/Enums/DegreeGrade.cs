@@ -2,15 +2,15 @@
 {
     using System.ComponentModel;
 
-    public enum DegreeGradeEnum : int
+    public enum DegreeGrade : byte
     {
-        [DescriptionAttribute("1st")]
-        first,
-        [DescriptionAttribute("2:1")]
-        twoOne,
-        [DescriptionAttribute("2:2")]
-        twoTwo,
-        [DescriptionAttribute("3rd")]
-        third
+        [Description("1st")]
+        First,
+        [Description("2:1")]
+        TwoOne,
+        [Description("2:2")]
+        TwoTwo,
+        [Description("3rd")]
+        Third
     }
 }

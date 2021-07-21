@@ -1,36 +1,29 @@
 ﻿namespace ULaw.ApplicationProcessor
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
     using System.ComponentModel;
-    using System.Reflection;
-
+    using System.Linq;
 
     static class EnumExtensions
     {
-        public static string ToDescription(this Enum en)
+        public static string ToDescription(this Enum enumeration)
         {
-            Type type = en.GetType();
+            var enumerationType = enumeration.GetType();
+            var enumerationName = Enum.GetName(enumerationType, enumeration);
 
-            MemberInfo[] memInfo = type.GetMember(en.ToString());
+            var memberInfo = enumerationType.GetMember(enumerationName).FirstOrDefault();
 
-            if (memInfo != null && memInfo.Length > 0)
-
+            if (memberInfo != null)
             {
+                var descriptionAttribute = (DescriptionAttribute)memberInfo.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault();
 
-                object[] attrs = memInfo[0].GetCustomAttributes(
-                                              typeof(DescriptionAttribute),
-
-                                              false);
-
-                if (attrs != null && attrs.Length > 0)
-
-                    return ((DescriptionAttribute)attrs[0]).Description;
-
+                if (descriptionAttribute != null)
+                {
+                    return descriptionAttribute.Description;
+                }
             }
-            return en.ToString();
+
+            return enumerationName;
         }
     }
-
 }

@@ -2,15 +2,15 @@
 {
     using System.ComponentModel;
 
-    public enum DegreeSubjectEnum : int
+    public enum DegreeSubject : byte
     {
-        [DescriptionAttribute("Law")]
-        law,
-        [DescriptionAttribute("Law and Business")]
-        lawAndBusiness,
-        [DescriptionAttribute("Maths")]
-        maths,
-        [DescriptionAttribute("English")]
+        [Description("Law")]
+        Law,
+        [Description("Law and Business")]
+        LawAndBusiness,
+        [Description("Maths")]
+        Maths,
+        [Description("English")]
         English
     }
 }

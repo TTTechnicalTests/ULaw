@@ -1,4 +1,4 @@
-﻿namespace Ulaw.ApplicationProcessor.Models
+﻿namespace ULaw.ApplicationProcessor.Models
 {
     using System;
 
@@ -6,9 +6,9 @@
 
     public class ApplicationSubmission
     {
-        public ApplicationSubmission(string faculty, string courseCode, DateTime startDate, string title, string firstName, string lastName, DateTime dateOfBirth, bool requiresVisa)
+        public ApplicationSubmission(Guid applicationId, string faculty, string courseCode, DateTime startDate, string title, string firstName, string lastName, DateTime dateOfBirth, bool requiresVisa)
         {
-            ApplicationId = new Guid();
+            ApplicationId = applicationId;
             Faculty = faculty;
             CourseCode = courseCode;
             StartDate = startDate;

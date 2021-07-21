@@ -4,9 +4,9 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    using ULaw.ApplicationProcessor;
     using ULaw.ApplicationProcessor.Enums;
-    using Ulaw.ApplicationProcessor.Models;
+    using ULaw.ApplicationProcessor.Models;
+    using ULaw.ApplicationProcessor.Services;
 
     [TestClass]
     public class ApplicationSubmissionTests
@@ -22,127 +22,136 @@
         [TestMethod]
         public void ApplicationSubmissionWithFirstLawDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.First;
-            thisSubmission.DegreeSubject = DegreeSubject.Law;
+            applicationSubmission.DegreeGrade = DegreeGrade.First;
+            applicationSubmission.DegreeSubject = DegreeSubject.Law;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, OfferEmailForFirstLawDegreeResult);
+            Assert.AreEqual(submissionResponse, OfferEmailForFirstLawDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithFirstLawAndBusinessDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.First;
-            thisSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
+            applicationSubmission.DegreeGrade = DegreeGrade.First;
+            applicationSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, OfferEmailForFirstLawAndBusinessDegreeResult);
+            Assert.AreEqual(submissionResponse, OfferEmailForFirstLawAndBusinessDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithFirstEnglishDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.First;
-            thisSubmission.DegreeSubject = DegreeSubject.English;
+            applicationSubmission.DegreeGrade = DegreeGrade.First;
+            applicationSubmission.DegreeSubject = DegreeSubject.English;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
+            Assert.AreEqual(submissionResponse, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneLawDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
-            thisSubmission.DegreeSubject = DegreeSubject.Law;
+            applicationSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            applicationSubmission.DegreeSubject = DegreeSubject.Law;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawDegreeResult);
+            Assert.AreEqual(submissionResponse, OfferEmailForTwoOneLawDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneMathsDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
-            thisSubmission.DegreeSubject = DegreeSubject.Maths;
+            applicationSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            applicationSubmission.DegreeSubject = DegreeSubject.Maths;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
+            Assert.AreEqual(submissionResponse, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoOneLawAndBusinessDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.TwoOne;
-            thisSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
+            applicationSubmission.DegreeGrade = DegreeGrade.TwoOne;
+            applicationSubmission.DegreeSubject = DegreeSubject.LawAndBusiness;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, OfferEmailForTwoOneLawAndBusinessDegreeResult);
+            Assert.AreEqual(submissionResponse, OfferEmailForTwoOneLawAndBusinessDegreeResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoTwoEnglishDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.TwoTwo;
-            thisSubmission.DegreeSubject = DegreeSubject.English;
+            applicationSubmission.DegreeGrade = DegreeGrade.TwoTwo;
+            applicationSubmission.DegreeSubject = DegreeSubject.English;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
+            Assert.AreEqual(submissionResponse, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithTwoTwoLawDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.TwoTwo;
-            thisSubmission.DegreeSubject = DegreeSubject.Law;
+            applicationSubmission.DegreeGrade = DegreeGrade.TwoTwo;
+            applicationSubmission.DegreeSubject = DegreeSubject.Law;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, FurtherInfoEmailResult);
+            Assert.AreEqual(submissionResponse, FurtherInfoEmailResult);
         }
 
         [TestMethod]
         public void ApplicationSubmissionWithThirdDegree()
         {
-            var thisSubmission = new ApplicationSubmission("Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
+            var applicationId = new Guid();
+            var applicationSubmission = new ApplicationSubmission(applicationId, "Law", "ABC123", new DateTime(2019, 9, 22), "Mr", "Test", "Tester", new DateTime(1991, 08, 14), false);
             var applicationService = new ApplicationSubmissionService();
 
-            thisSubmission.DegreeGrade = DegreeGrade.Third;
-            thisSubmission.DegreeSubject = DegreeSubject.Maths;
+            applicationSubmission.DegreeGrade = DegreeGrade.Third;
+            applicationSubmission.DegreeSubject = DegreeSubject.Maths;
 
-            var emailHtml = applicationService.CreateSubmissionResponseEmail(thisSubmission);
+            var submissionResponse = applicationService.CreateSubmissionResponseEmail(applicationSubmission);
 
-            Assert.AreEqual(emailHtml, RejectionEmailForAnyThirdDegreeResult);
+            Assert.AreEqual(submissionResponse, RejectionEmailForAnyThirdDegreeResult);
         }
     }
   
